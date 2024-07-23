@@ -1,0 +1,1 @@
+Medicare Booking is a comprehensive medical care connection platform designed to streamline communication and coordination between patients, doctors, and administrators. This project aims to enhance healthcare accessibility and management through a user-friendly web application.
