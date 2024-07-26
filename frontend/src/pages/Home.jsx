@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { BsArrowRight } from 'react-icons/bs';
 import About from '../components/About/About';
 import ServiceList from '../components/Services/ServiceList';
+import DoctorList from '../components/Doctors/DoctorList';
 
 const Home = () => {
   return (
@@ -112,7 +113,7 @@ const Home = () => {
 
                 <Link to='/doctors' className='w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto 
                   flex items-center justify-center group hover:bg-primaryColor hover:border-none '>
-                  <BsArrowRight className='group-hover:text-white w-6 h-5' />                  
+                  <BsArrowRight className='group-hover:text-white w-6 h-5' />
                 </Link>
 
               </div>
@@ -133,7 +134,7 @@ const Home = () => {
 
                 <Link to='/doctors' className='w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto 
                   flex items-center justify-center group hover:bg-primaryColor hover:border-none '>
-                  <BsArrowRight className='group-hover:text-white w-6 h-5' />                  
+                  <BsArrowRight className='group-hover:text-white w-6 h-5' />
                 </Link>
 
               </div>
@@ -145,7 +146,7 @@ const Home = () => {
               </div>
               <div className='mt-[30px]'>
                 <h2 className="text-[26px] leading-9 text-headingColor font-[700] text-center">
-                Book Appointment
+                  Book Appointment
                 </h2>
 
                 <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
@@ -154,7 +155,7 @@ const Home = () => {
 
                 <Link to='/doctors' className='w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto 
                   flex items-center justify-center group hover:bg-primaryColor hover:border-none '>
-                  <BsArrowRight className='group-hover:text-white w-6 h-5' />                  
+                  <BsArrowRight className='group-hover:text-white w-6 h-5' />
                 </Link>
 
               </div>
@@ -166,7 +167,7 @@ const Home = () => {
         </div>
       </section>
 
-      <About/>
+      <About />
 
       {/*=========== services section ==========*/}
 
@@ -180,7 +181,7 @@ const Home = () => {
               World-class care for everyone. Our health System offers unmatched,expert health care
             </p>
           </div>
-          <ServiceList/>
+          <ServiceList />
         </div>
       </section>
 
@@ -194,7 +195,7 @@ const Home = () => {
             {/*=============feature content =========*/}
             <div className="xl:w-[670px]">
               <h2 className="heading">
-                Get virtual treatment <br/> anytime.
+                Get virtual treatment <br /> anytime.
               </h2>
               <ul className="pl-4">
                 <li className="text_para">
@@ -211,7 +212,7 @@ const Home = () => {
             </div>
             {/*========== feature img ==============*/}
             <div className='relative z-10 xl:w-[770px] flex justify-end mt-[50px] l:mt-0'>
-              <img src={featureImg} alt=""  className='w-3/4'/>
+              <img src={featureImg} alt="" className='w-3/4' />
 
               <div className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] 
               md:left-5 z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
@@ -233,7 +234,7 @@ const Home = () => {
 
                 <div className="w-[65px] lg:w-[96px] bg-[#CCF0F3] py-1 px-2 lg:py-[6px] lg:px-[10px] text-[8px]
                 leading-[8px] lg:text-[12px] lg:leading-4 text-irisBlueColor font-[500] mt-2 lg:mt-4 rounded-full">
-                    Consultation
+                  Consultation
                 </div>
 
                 <div className='flex items-center gap-[6px] lg:gap-[10px] mt-2 lg:mt-[18px]'>
@@ -249,6 +250,22 @@ const Home = () => {
         </div>
       </section>
       {/*=========== feature section end ==========*/}
+
+      {/*=========== our best Doctors ==========*/}
+      <section>
+        <div className="container">
+          <div className="xl:w-[470px] mx-auto">
+            <h2 className="heading text-center">
+              Our great doctors
+            </h2>
+            <p className="text_para text-center">
+              World-class care for everyone. Our health System offers unmatched,expert health care
+            </p>
+          </div>
+          <DoctorList/>
+        </div>
+      </section>
+      {/*=========== our best Doctors ==========*/}
 
     </>
   )
