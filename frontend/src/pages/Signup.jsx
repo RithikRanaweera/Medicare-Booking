@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import signupImg from '../assets/images/signup.gif'
-import avatar from '../assets/images/doctor-img03.png'
 import { Link, useNavigate } from 'react-router-dom'
 import uploadImageToCloudinary from '../utils/uploadCloudinary';
 import { BASE_URL } from '../config';
@@ -39,14 +38,14 @@ const Signup = () => {
     setFormDate({ ...formDate, photo: date.url });
 
     //later wew will use cloudinary to upload images
-  }
+  };
 
   const submitHandler = async event => {
-    event.preventDefault()
-    setLoading(true)
+    event.preventDefault();
+    setLoading(true);
 
     try {
-      const res = await fetch(`${BASE_URL}/auth/register`, {  // Corrected here
+      const res = await fetch(`${BASE_URL}/auth/register`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -67,7 +66,7 @@ const Signup = () => {
       toast.error(err.message);
       setLoading(false);
     }
-  }
+  };
 
   return (
     <section className='px-5 xl:px-0'>
