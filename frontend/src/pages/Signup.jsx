@@ -45,20 +45,20 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${BASE_URL}/auth/register`, { 
+      const res = await fetch(`${BASE_URL}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formDate)
       });
-  
+
       const { message } = await res.json();
-  
+
       if (!res.ok) {
         throw new Error(message);
       }
-  
+
       setLoading(false);
       toast.success(message);
       navigate('/login');
@@ -154,10 +154,11 @@ const Signup = () => {
               </div>
 
               <div className="mb-5 flex items-center gap-3">
-                {selectedFile && <figure className='w-[60px] h-[60px] rounded-full border border-solid
-                 border-primaryColor flex items-center justify-center'>
-                  <img src={previewURL} alt="" className='w-full rounded-full' />
-                </figure>}
+                {selectedFile && (
+                  <figure className='w-[60px] h-[60px] rounded-full border border-solid
+                  border-primaryColor flex items-center justify-center'>
+                    <img src={previewURL} alt="" className='w-full rounded-full' />
+                  </figure>)}
 
                 <div className='relative w-[130px] h-[50px]'>
                   <input
@@ -183,7 +184,7 @@ const Signup = () => {
                   className='w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg p-4 py-3'
                 >
 
-                  {loading ? (  
+                  {loading ? (
                     < HashLoader size={35} color='#ffffff' />
                   ) : (
                     "Sign Up"
