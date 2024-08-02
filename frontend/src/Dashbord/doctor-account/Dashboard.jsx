@@ -4,10 +4,11 @@ import Error from '../../components/Error/Error';
 import useGetProfile from '../../hooks/useFetchData';
 import { BASE_URL } from '../../config';
 import Tabs from './Tabs';
-import doctorImg from '../../assets/images/doctor-img02.png'
 import starIcon from '../../assets/images/Star.png'
 import DoctorAbout from './../../pages/Doctors/DoctorAbout';
 import Profile from './Profile.jsx';
+import Appointments from './Appointments.jsx';
+
 
 
 const Dashboard = () => {
@@ -91,7 +92,9 @@ const Dashboard = () => {
                   />
                 </div>}
 
-                {tab === 'appointments' && <div>Appointments</div>}
+                {tab === 'appointments' && (
+                  <Appointments appointments={data.appointments} />
+                )}
 
                 {tab === 'settings' && <Profile doctorData={data} />}
 
