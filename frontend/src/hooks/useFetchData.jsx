@@ -9,9 +9,7 @@ const useFetchData = (url) => {
 
     useEffect(() => {
         const fetchData = async () => {
-
-            setLoading(true)
-
+            setLoading(true);
             try {
                 const res = await fetch(url, {
                     headers: { 
@@ -19,11 +17,10 @@ const useFetchData = (url) => {
                     }
                 });
                 
-
-                const result = await res.json()
+                const result = await res.json();
 
                 if (!res.ok) {
-                    throw new Error(result.message + '🤢')
+                    throw new Error(result.message + '🤢');
                 }
 
                 setData(result.data);

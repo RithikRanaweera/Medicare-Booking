@@ -35,9 +35,6 @@ const Signup = () => {
     setPreviewURL(data.url);
     setSelectedFile(data.url);
     setFormData({ ...formData, photo: data.url });
-
-    //later wew will use cloudinary to upload images
-
   };
 
 
@@ -95,7 +92,7 @@ const Signup = () => {
                   type="text"
                   placeholder='Full Name'
                   name='name'
-                  value={formDate.name}
+                  value={formData.name}
                   onChange={handleInputChange}
                   className="w-full pr-4  py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor
                text-[16px] leading-7 text-headingColor placeholder:text-textColor  cursor-pointer"
@@ -108,7 +105,7 @@ const Signup = () => {
                   type="email"
                   placeholder='Enter your email'
                   name='email'
-                  value={formDate.email}
+                  value={formData.email}
                   onChange={handleInputChange}
                   className="w-full pr-4  py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor
                text-[16px] leading-7 text-headingColor placeholder:text-textColor  cursor-pointer"
@@ -121,7 +118,7 @@ const Signup = () => {
                   type="password"
                   placeholder='Password'
                   name='password'
-                  value={formDate.password}
+                  value={formData.password}
                   onChange={handleInputChange}
                   className="w-full  py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor
                text-[16px] leading-7 text-headingColor placeholder:text-textColor  cursor-pointer"
@@ -134,7 +131,7 @@ const Signup = () => {
                   Are you a:
                   <select
                     name='role'
-                    value={formDate.role}
+                    value={formData.role}
                     onChange={handleInputChange}
                     className='text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none'>
                     <option value="patient">Patient</option>
@@ -146,7 +143,7 @@ const Signup = () => {
                   Gender:
                   <select
                     name='gender'
-                    value={formDate.gender}
+                    value={formData.gender}
                     onChange={handleInputChange}
                     className='text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none'>
                     <option value="">Select</option>

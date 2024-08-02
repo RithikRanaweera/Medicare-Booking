@@ -270,6 +270,7 @@ const Home = () => {
       </section>
       {/*=========== our great Doctors ==========*/}
 
+
       {/* =========== faq section ============*/}
       <section>
         <div className="container">
@@ -287,6 +288,7 @@ const Home = () => {
       </section>
       {/* =========== faq section end ============*/}
 
+
       {/*======== testimonial =========*/}
       <section>
         <div className='container'>
@@ -301,7 +303,6 @@ const Home = () => {
           <Testimonial/>
         </div>
       </section>
-
       {/*======== testimonial end =========*/}
 
     </>
