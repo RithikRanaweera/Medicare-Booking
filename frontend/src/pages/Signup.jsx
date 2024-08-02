@@ -14,7 +14,7 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const [formDate, setFormDate] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
@@ -23,42 +23,45 @@ const Signup = () => {
     role: "patient"
   });
 
+
   const handleInputChange = e => {
-    setFormDate({ ...formDate, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
 
   const handleFileInputChange = async event => {
     const file = event.target.files[0];
-
-    const date = await uploadImageToCloudinary(file);
-
-    setPreviewURL(date.url);
-    setSelectedFile(date.url);
-    setFormDate({ ...formDate, photo: date.url });
+    const data = await uploadImageToCloudinary(file);
+    setPreviewURL(data.url);
+    setSelectedFile(data.url);
+    setFormData({ ...formData, photo: data.url });
 
     //later wew will use cloudinary to upload images
+
   };
+
+
+
 
   const submitHandler = async event => {
     event.preventDefault();
     setLoading(true);
-
+  
     try {
       const res = await fetch(`${BASE_URL}/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formDate)
+        body: JSON.stringify(formData)
       });
-
+  
       const { message } = await res.json();
-
+  
       if (!res.ok) {
         throw new Error(message);
       }
-
+  
       setLoading(false);
       toast.success(message);
       navigate('/login');
@@ -67,6 +70,7 @@ const Signup = () => {
       setLoading(false);
     }
   };
+  
 
   return (
     <section className='px-5 xl:px-0'>

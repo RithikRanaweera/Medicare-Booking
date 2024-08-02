@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
+import uploadImageToCloudinary from '../../utils/uploadCloudinary';
+import { BASE_URL, token } from '../../config';
+import { toast } from 'react-toastify';
 
-const Profile = () => {
+const Profile = ({ doctorData }) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
+        password: "",
         phone: "",
+        bio: "",
         gender: "",
         specialization: "",
         ticketPrice: 0,
@@ -16,14 +21,58 @@ const Profile = () => {
         photo: null,
     });
 
+    useEffect(() => {
+        setFormData({
+            name: doctorData?.name,
+            email: doctorData?.email,
+            phone: doctorData?.phone,
+            bio: doctorData?.bio,
+            gender: doctorData?.gender,
+            specialization: doctorData?.specialization,
+            ticketPrice: doctorData?.ticketPrice,
+            qualifications: doctorData?.qualifications,
+            experiences: doctorData?.experiences,
+            timeSlots: doctorData?.timeSlots,
+            about: doctorData?.about,
+            photo: doctorData?.photo,
+        });
+    },[doctorData]);
+
     const handleInputChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFileInputChange = e => { }
+    const handleFileInputChange = async event => {
+        const file = event.target.files[0];
+        const data = await uploadImageToCloudinary(file);
+
+        setFormData({ ...formData, photo: data?.url });
+    }
 
     const updateProfileHandler = async e => {
         e.preventDefault();
+
+        try {
+            const res = await fetch(`${BASE_URL}/doctors/${doctorData._id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(formData),
+            })
+
+            const result = await res.json();
+
+            if (!res.ok) {
+                throw Error(result.message);
+            }
+
+            toast.success(result.message);
+
+        } catch (err) {
+            toast.error(err.message);
+        }
     };
 
     //reusable function for adding item
@@ -54,6 +103,8 @@ const Profile = () => {
             [key]: prevFormData[key].filter((_, i) => i !== index),
         }));
     }
+
+    //............................................................
 
     const addQualification = e => {
         e.preventDefault();
@@ -102,7 +153,7 @@ const Profile = () => {
         addItem("timeSlots", {
             day: "Sunday",
             startingTime: "10:00",
-            endingTime: "4:30"
+            endingTime: "04:30"
         });
     }
 
@@ -115,6 +166,7 @@ const Profile = () => {
         deleteItem('timeSlots', index);
     }
 
+    //...........................................................
 
     return (<div>
         <h2 className="text-headingColor font-bold text-[24px] leading-9 mb-10">
@@ -144,7 +196,7 @@ const Profile = () => {
                     className='form_input'
                     readOnly
                     aria-readonly
-                    disabled="true"
+                    disabled={true}
                 />
             </div>
 
