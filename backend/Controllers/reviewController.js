@@ -4,7 +4,8 @@ import Doctor from "../models/DoctorSchema.js";
 //get all reviews
 export const getAllReviews = async (req, res) => {
   try {
-    const reviews = await Review.find();
+    //const reviews = await Review.find().populate('user','name photo _id');
+    const reviews = await Review.find()
 
     res
         .status(200)
@@ -17,7 +18,7 @@ export const getAllReviews = async (req, res) => {
 
 //create review
 export const createReview = async (req, res) => {
-  
+    console.log(req.params.userId);
     if(!req.body.doctor) req.body.doctor = req.params.doctorId;
     if(!req.body.user) req.body.user = req.params.userId;
 

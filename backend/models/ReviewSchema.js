@@ -29,7 +29,7 @@ const reviewSchema = new mongoose.Schema(
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
-    select: "name photo",
+    select: "name photo", // Include _id here
   });
   next();
 });
@@ -46,6 +46,12 @@ reviewSchema.statics.calcAverageRatings = async function (doctorId) {
         _id: "$doctor",
         numOfRating: { $sum: 1 },
         avgRating: { $avg: "$rating" },
+      },
+    },
+    {
+      $project: {
+        numOfRating: 1,
+        avgRating: { $round: ["$avgRating", 1] },  // Round avgRating to 1 decimal place
       },
     },
   ]);

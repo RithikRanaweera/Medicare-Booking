@@ -1,6 +1,5 @@
 import DoctorCard from './DoctorCard.jsx';
 import { BASE_URL } from './../../config';
-
 import useFetchData from './../../hooks/useFetchData';
 import Loader from '../../components/Loader/Loading';
 import Error from '../../components/Error/Error';
