@@ -47,16 +47,16 @@ const Appointments = ({ appointments }) => {
                             {item.isPaid && (
                                 <div className="flex items-center">
                                     <div className="h-2.5 w-2.5 bg-green-500 rounded-full mr-2">
-                                        Paid
                                     </div>
+                                    <div>Paid</div>
                                 </div>
                             )}
 
                             {!item.isPaid && (
                                 <div className="flex items-center">
                                     <div className="h-2.5 w-2.5 bg-red-500 rounded-full mr-2">
-                                        Unpaid
                                     </div>
+                                    <div>Unpaid</div>
                                 </div>
                             )}
 
