@@ -5,8 +5,9 @@ const DoctorAbout = ({ name, about, qualifications, experiences }) => {
     return (
         <div>
             <div>
-                <h3 className='text-[20px] leading-[30px] text-headingColor font-semibold flex items-center gap-2'>
-                    About of
+                <h3 className='text-[20px] leading-[30px] text-headingColor font-semibold flex items-end gap-2'>
+                    About of  
+                    <span className='text-irisBlueColor font-bold text-[24px] leading-9 pl-1'> Dr.</span>
                     <span className='text-irisBlueColor font-bold text-[24px] leading-9'>{name}</span>
                 </h3>
 
